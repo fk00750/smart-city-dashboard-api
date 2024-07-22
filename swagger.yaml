@@ -1,0 +1,403 @@
+openapi: 3.0.0
+info:
+  title: SmartCity
+  description: This API is designed to power a Smart City Dashboard, providing features for user authentication, news retrieval, weather information, and email notifications powered by Gemini.
+  contact:
+    name: Faiz Ali Khan
+    url: https://www.linkedin.com/in/faizalikhan-developer/
+    email: fk7384329@gmail.com
+  version: '1.0'
+servers:
+- url: https://smartcityserver-prod.onrender.com
+  variables: {}
+- url: https://smartcityserver-prod.onrender.com/api
+  variables: {}
+paths:
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register
+      description: Registers a new user with name, email, and password.
+      operationId: Register
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterRequest'
+              - example:
+                  name: Faiz Ali Khan
+                  email: fk00750@gmail.com
+                  password: Qazplmvb56@
+            example:
+              name: Faiz Ali Khan
+              email: fk00750@gmail.com
+              password: Qazplmvb56@
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login
+      description: Authenticates a user and issues access and refresh tokens.
+      operationId: Login
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginRequest'
+              - example:
+                  email: fk00750@gmail.com
+                  password: Qazplmvb56@
+            example:
+              email: fk00750@gmail.com
+              password: Qazplmvb56@
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+  /profile/view-profile:
+    get:
+      tags:
+      - Profile
+      summary: Profile
+      description: Retrieves the authenticated user's profile information.
+      operationId: Profile
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+  /profile/update-email:
+    patch:
+      tags:
+      - Profile
+      summary: Update Email
+      description: Updates the authenticated user's email address.
+      operationId: UpdateEmail
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateEmailRequest'
+              - example:
+                  email: fk7384329@gmail.com
+            example:
+              email: fk7384329@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+  /profile/update-name:
+    patch:
+      tags:
+      - Profile
+      summary: Update Name
+      description: Updates the authenticated user's name.
+      operationId: UpdateName
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateNameRequest'
+              - example:
+                  name: Faiz AK
+            example:
+              name: Faiz AK
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+  /news/news-headlines:
+    get:
+      tags:
+      - News
+      summary: News Headlines
+      description: Fetches top news headlines based on the specified country and page size.
+      operationId: NewsHeadlines
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+  /news/every-news:
+    get:
+      tags:
+      - News
+      summary: Every News
+      description: Fetches news articles based on the specified topic and page size.
+      operationId: EveryNews
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+  /news/save-news:
+    post:
+      tags:
+      - News
+      summary: Save News
+      description: Saves a news article to the authenticated user's account.
+      operationId: SaveNews
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/SaveNewsRequest'
+              - example:
+                  title: This Ancient Technology Is Helping Millions Stay Cool
+                  description: Cheap, low-energy evaporative cooling devices are keeping water, food, people, and even whole buildings cool across India.
+                  url: https://www.wired.com/story/evaporative-cooling-devices-coolant-clay-matka-mitticool-india-heat-wave/
+                  urlToImage: https://media.wired.com/photos/6672c421e0704c563b4e7b77/191:100/w_1280,c_limit/GettyImages-80973767.jpg
+            example:
+              title: This Ancient Technology Is Helping Millions Stay Cool
+              description: Cheap, low-energy evaporative cooling devices are keeping water, food, people, and even whole buildings cool across India.
+              url: https://www.wired.com/story/evaporative-cooling-devices-coolant-clay-matka-mitticool-india-heat-wave/
+              urlToImage: https://media.wired.com/photos/6672c421e0704c563b4e7b77/191:100/w_1280,c_limit/GettyImages-80973767.jpg
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+  /news/view-save-news:
+    get:
+      tags:
+      - News
+      summary: View Save News
+      description: Retrieves the list of news articles saved by the authenticated user.
+      operationId: ViewSaveNews
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+  /weather/city-weather:
+    get:
+      tags:
+      - Weather
+      summary: City Weather
+      description: Fetches weather information for a specified city.
+      operationId: CityWeather
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+  /weather/city-weather-location:
+    get:
+      tags:
+      - Weather
+      summary: Location Weather
+      description: Fetches weather information based on specified latitude and longitude.
+      operationId: LocationWeather
+      parameters:
+      - name: lat
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: number
+          format: double
+          example: 30.7333
+      - name: lon
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: number
+          format: double
+          example: 76.7794
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+  /ai/email-top-news-headlines:
+    post:
+      tags:
+      - AI
+      summary: Email Top News Headlines
+      description: Sends an email with the top news headlines curated by Gemini AI to the authenticated user via a Zapier webhook.
+      operationId: EmailTopNewsHeadlines
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://smartcityserver-prod.onrender.com/api
+        variables: {}
+components:
+  schemas:
+    RegisterRequest:
+      title: RegisterRequest
+      required:
+      - name
+      - email
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: Faiz Ali Khan
+        email: fk00750@gmail.com
+        password: Qazplmvb56@
+    LoginRequest:
+      title: LoginRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: fk00750@gmail.com
+        password: Qazplmvb56@
+    SaveNewsRequest:
+      title: SaveNewsRequest
+      required:
+      - title
+      - description
+      - url
+      - urlToImage
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        urlToImage:
+          type: string
+      example:
+        title: This Ancient Technology Is Helping Millions Stay Cool
+        description: Cheap, low-energy evaporative cooling devices are keeping water, food, people, and even whole buildings cool across India.
+        url: https://www.wired.com/story/evaporative-cooling-devices-coolant-clay-matka-mitticool-india-heat-wave/
+        urlToImage: https://media.wired.com/photos/6672c421e0704c563b4e7b77/191:100/w_1280,c_limit/GettyImages-80973767.jpg
+    UpdateEmailRequest:
+      title: UpdateEmailRequest
+      required:
+      - email
+      type: object
+      properties:
+        email:
+          type: string
+      example:
+        email: fk7384329@gmail.com
+    UpdateNameRequest:
+      title: UpdateNameRequest
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+      example:
+        name: Faiz AK
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: Auth
+  description: ''
+- name: Profile
+  description: ''
+- name: News
+  description: ''
+- name: Weather
+  description: ''
+- name: AI
+  description: ''

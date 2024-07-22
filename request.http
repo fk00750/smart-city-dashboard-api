@@ -1,0 +1,45 @@
+GET http://localhost:3001
+
+###
+
+POST http://localhost:3001/api/auth/register HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Faiz",
+    "email":"fk_00750@yahoo.com",
+    "password":"Qazplmvb56@"
+}
+
+###
+
+POST http://localhost:3001/api/auth/login HTTP/1.1
+content-type: application/json
+{
+    "email":"fk_00750@yahoo.com",
+    "password":"Qazplmvb56@"
+}
+
+###
+
+GET https://api.openweathermap.org/data/2.5/weather?lat=28.6667&lon=77.2167&appid=12095d2a7bfea2fe15f6d69aea8780ae
+
+###
+
+GET http://localhost:3001/api/weather/city-weather
+
+### 
+
+GET https://newsapi.org/v2/everything?q=india&apiKey=9b943ddef436465cb83bbfb038d0b20f
+
+###
+
+GET http://localhost:3001/api/news/every-news
+
+###
+
+POST http://localhost:3001/api/ai/send-webhook HTTP/1.1
+
+### 
+
+GET https://api.zapier.com/v1/check/0190cf8a-9910-fe66-68c4-59415874e0e5`
